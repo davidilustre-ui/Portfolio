@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Ymor M. Ilustre — Salesforce Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0f;
+      --bg2: #13131a;
+      --bg3: #1a1a24;
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.12);
+      --accent: #a78bfa;
+      --accent2: #7c5cfc;
+      --accent-dim: rgba(167,139,250,0.12);
+      --accent-dim2: rgba(167,139,250,0.06);
+      --text: #f0eeff;
+      --text2: #9b97b8;
+      --text3: #5c5878;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* GRID BACKGROUND */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(167,139,250,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(167,139,250,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* GLOW */
+    .glow-orb {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,92,252,0.12) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 60px;
+      background: rgba(13,13,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text2);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* WRAPPER */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 6rem 0 5rem;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      padding: 5px 14px;
+      border: 1px solid rgba(167,139,250,0.25);
+      border-radius: 99px;
+      background: var(--accent-dim2);
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name .accent { color: var(--accent); }
+
+    .hero-title {
+      font-size: 18px;
+      color: var(--text2);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .hero-bio {
+      font-size: 15px;
+      color: var(--text2);
+      max-width: 540px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d0d0f;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #b8a0ff;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border2);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 4rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    /* ABOUT */
+    .about-text {
+      font-size: 15px;
+      color: var(--text2);
+      max-width: 620px;
+      line-height: 1.9;
+    }
+
+    /* PROJECTS */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .proj-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .proj-card:hover {
+      border-color: rgba(167,139,250,0.3);
+      transform: translateY(-2px);
+    }
+
+    .proj-card h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .proj-card p {
+      font-size: 13px;
+      color: var(--text2);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1rem; }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .bar-row { margin-top: 8px; }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text3);
+      margin-bottom: 4px;
+    }
+
+    .bar-track {
+      background: rgba(255,255,255,0.05);
+      border-radius: 99px;
+      height: 4px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 4px;
+      border-radius: 99px;
+      background: var(--accent);
+      transition: width 1s ease;
+    }
+
+    .bar-fill.blue { background: #60a5fa; }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: border-color 0.2s;
+    }
+
+    .skill-item:hover { border-color: rgba(167,139,250,0.3); }
+
+    .skill-cat {
+      font-size: 11px;
+      color: var(--text3);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+    .exp-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-left { flex-shrink: 0; width: 120px; }
+
+    .exp-period {
+      font-size: 12px;
+      color: var(--text3);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    .exp-right { flex: 1; }
+
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .exp-co {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .exp-type {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--accent-dim2);
+      color: var(--accent);
+      border: 1px solid rgba(167,139,250,0.2);
+      margin-bottom: 8px;
+    }
+
+    .exp-desc {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    /* CERTS */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+    }
+
+    .cert-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.1rem;
+      transition: border-color 0.2s;
+    }
+
+    .cert-card:hover { border-color: rgba(167,139,250,0.3); }
+
+    .cert-card.active { border-color: rgba(167,139,250,0.25); background: var(--accent-dim2); }
+
+    .cert-issuer {
+      font-size: 11px;
+      color: var(--text3);
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .cert-name {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .cert-date { font-size: 11px; color: var(--text3); margin-bottom: 6px; }
+
+    .cert-badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 500;
+    }
+
+    .badge-active { background: rgba(52,211,153,0.12); color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+    .badge-completed { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(167,139,250,0.2); }
+    .badge-expired { background: rgba(255,255,255,0.04); color: var(--text3); border: 1px solid var(--border); }
+
+    /* CONTACT */
+    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border2);
+      font-size: 13px;
+      color: var(--text);
+      text-decoration: none;
+      background: var(--bg2);
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .contact-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text3);
+    }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 4rem 0 3rem; }
+      .exp-item { flex-direction: column; gap: 0.5rem; }
+      .exp-left { width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-orb"></div>
+
+  <nav>
+    <div class="nav-logo">David<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="wrapper">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow fade-in">Available for opportunities</div>
+      <h1 class="hero-name fade-in">David Ymor<br><span class="accent">M. Ilustre</span></h1>
+      <p class="hero-title fade-in">Salesforce Developer · Full-Stack Background</p>
+      <p class="hero-bio fade-in">From building full-stack web apps during college to developing on the Salesforce platform professionally — I bridge the gap between traditional development and modern CRM engineering. Currently working as a Salesforce Consultant at PwC South East Asia Consulting.</p>
+      <div class="hero-cta fade-in">
+        <a href="https://github.com/davidilustre-ui" target="_blank" class="btn btn-primary">GitHub Profile</a>
+        <a href="mailto:mi.ymor2002@gmail.com" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-label">About me</div>
+      <h2 class="section-title">Who I am</h2>
+      <p class="about-text">I started as a full-stack developer during college, building web systems for academic research and capstone projects using Python, Flask, and HTML. Now I work professionally on the Salesforce platform, holding three active Salesforce certifications earned in 2025. I'm passionate about building solutions that help organizations operate smarter — whether through custom Apex code, declarative flows, or CRM strategy.</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-label">Work</div>
+      <h2 class="section-title">Projects</h2>
+      <div class="proj-grid">
+        <div class="proj-card">
+          <h3>SCDS — Capstone Project</h3>
+          <p>A full backend-driven web application built with Python and Flask, covering data management, scripting, and automation as part of a college capstone project.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">HTML</span>
+            <span class="tag">PowerShell</span>
+            <span class="tag">CSS</span>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>Python</span><span>94.7%</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:94.7%"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label"><span>HTML</span><span>5.0%</span></div>
+            <div class="bar-track"><div class="bar-fill blue" style="width:5%"></div></div>
+          </div>
+        </div>
+        <div class="proj-card">
+          <h3>Student Performance System</h3>
+          <p>A school research project that tracks and analyzes student performance data to support academic insights and reporting, built with Python and HTML.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">HTML</span>
+            <span class="tag">Research</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">Salesforce<div class="skill-cat">Platform</div></div>
+        <div class="skill-item">JavaScript<div class="skill-cat">Language</div></div>
+        <div class="skill-item">TypeScript<div class="skill-cat">Language</div></div>
+        <div class="skill-item">Python<div class="skill-cat">Language</div></div>
+        <div class="skill-item">Flask<div class="skill-cat">Framework</div></div>
+        <div class="skill-item">Next.js<div class="skill-cat">Framework</div></div>
+        <div class="skill-item">HTML / CSS<div class="skill-cat">Frontend</div></div>
+        <div class="skill-item">AI / LLMs<div class="skill-cat">Emerging Tech</div></div>
+        <div class="skill-item">WordPress<div class="skill-cat">CMS</div></div>
+        <div class="skill-item">Jira / Scrum<div class="skill-cat">Methodology</div></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Experience</h2>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="exp-period">Jan 2025<br>Present<br>1 yr 4 mos</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-role">Salesforce Consultant</div>
+            <div class="exp-co">PwC South East Asia Consulting</div>
+            <span class="exp-type">Full-time · On-site · Makati, PH</span>
+            <div class="exp-desc">Working as a Salesforce Consultant, delivering CRM solutions and platform implementations for enterprise clients across South East Asia.</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="exp-period">Mar 2024<br>Jul 2024<br>5 mos</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-role">IT Intern — WordPress & Scrum</div>
+            <div class="exp-co">Advanced Learning Programs</div>
+            <span class="exp-type">Internship · Remote · Makati, PH</span>
+            <div class="exp-desc">Worked with WordPress for web development tasks and applied Scrum methodology using Jira for project management and sprint tracking.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert-card active">
+          <div class="cert-issuer">Salesforce</div>
+          <div class="cert-name">Certified Administrator</div>
+          <div class="cert-date">Apr 2025 · Expires Dec 2026</div>
+          <span class="cert-badge badge-active">Active</span>
+        </div>
+        <div class="cert-card active">
+          <div class="cert-issuer">Salesforce</div>
+          <div class="cert-name">Certified Platform App Builder</div>
+          <div class="cert-date">May 2025 · Expires Dec 2026</div>
+          <span class="cert-badge badge-active">Active</span>
+        </div>
+        <div class="cert-card active">
+          <div class="cert-issuer">Salesforce</div>
+          <div class="cert-name">Certified Platform Developer I</div>
+          <div class="cert-date">May 2025 · Expires Dec 2026</div>
+          <span class="cert-badge badge-active">Active</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Sololearn</div>
+          <div class="cert-name">Web Development Fundamentals</div>
+          <div class="cert-date">Sep 2022 · ID: CT-RKADFLLB</div>
+          <span class="cert-badge badge-completed">Completed</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Fortinet</div>
+          <div class="cert-name">NSE Level 2: Certified Associate</div>
+          <div class="cert-date">Jul 2023 · Expired Jul 2025</div>
+          <span class="cert-badge badge-expired">Expired</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Fortinet</div>
+          <div class="cert-name">NSE Level 1: Certified Associate</div>
+          <div class="cert-date">Jul 2023 · Expired Jul 2025</div>
+          <span class="cert-badge badge-expired">Expired</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">mabl</div>
+          <div class="cert-name">Skills Certification: Foundations</div>
+          <div class="cert-date">Jul 2023 · Expired Jul 2024</div>
+          <span class="cert-badge badge-expired">Expired</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-label">Get in touch</div>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-row">
+        <a href="mailto:mi.ymor2002@gmail.com" class="contact-link">
+          <span class="contact-dot"></span>mi.ymor2002@gmail.com
+        </a>
+        <a href="https://github.com/davidilustre-ui" target="_blank" class="contact-link">
+          <span class="contact-dot"></span>GitHub
+        </a>
+        <a href="https://www.onlinejobs.ph/jobseekers/info/4825350" target="_blank" class="contact-link">
+          <span class="contact-dot"></span>Online Jobs PH
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="wrapper">
+      &copy; 2026 David Ymor M. Ilustre · Built with HTML, CSS &amp; intention.
+    </div>
+  </footer>
+</body>
+</html>
