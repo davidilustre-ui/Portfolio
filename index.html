@@ -313,11 +313,7 @@
         border-radius: 20px;
       }
       .showcase-left {
-        background: linear-gradient(
-          180deg,
-          rgba(16, 42, 67, 0.97),
-          rgba(16, 42, 67, 0.95)
-        );
+        background: rgba(4, 8, 15, 0.96);
         padding: 1.5rem 1rem;
       }
       .showcase-left::before,
@@ -331,11 +327,11 @@
       }
       .showcase-left::before {
         top: 0;
-        background: linear-gradient(180deg, var(--bg), rgba(16, 42, 67, 0));
+        background: linear-gradient(180deg, rgba(4, 8, 15, 1), rgba(4, 8, 15, 0));
       }
       .showcase-left::after {
         bottom: 0;
-        background: linear-gradient(0deg, var(--bg), rgba(16, 42, 67, 0));
+        background: linear-gradient(0deg, rgba(4, 8, 15, 1), rgba(4, 8, 15, 0));
       }
       .scroll-up {
         height: 100%;
@@ -350,35 +346,25 @@
       .showcase-item {
         padding-right: 0.5rem;
       }
-      .showcase-item .item-label {
-        font-family: var(--font-mono);
-        font-size: 10px;
-        color: var(--teal);
-        letter-spacing: 0.1em;
-        margin-bottom: 4px;
-        text-transform: uppercase;
-      }
       .showcase-item .item-title {
         font-family: var(--font-display);
-        font-size: 18px;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: var(--white);
-        line-height: 1.2;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--white2);
+        line-height: 1.5;
+      }
+      .showcase-item:hover .item-title {
+        color: var(--teal);
       }
       .showcase-item .item-divider {
         width: 100%;
         height: 1px;
-        background: rgba(0, 229, 255, 0.1);
-        margin: 16px 0;
+        background: rgba(0, 229, 255, 0.06);
+        margin: 14px 0;
       }
 
       .showcase-right {
-        background: linear-gradient(
-          90deg,
-          rgba(16, 42, 67, 0.95),
-          rgba(16, 42, 67, 0.95)
-        );
+        background: rgba(4, 8, 15, 0.96);
         padding: 1.5rem 1rem;
       }
       .showcase-right::before,
@@ -392,11 +378,11 @@
       }
       .showcase-right::before {
         left: 0;
-        background: linear-gradient(90deg, var(--bg), rgba(16, 42, 67, 0));
+        background: linear-gradient(90deg, rgba(4, 8, 15, 1), rgba(4, 8, 15, 0));
       }
       .showcase-right::after {
         right: 0;
-        background: linear-gradient(270deg, var(--bg), rgba(16, 42, 67, 0));
+        background: linear-gradient(270deg, rgba(4, 8, 15, 1), rgba(4, 8, 15, 0));
       }
       .scroll-left {
         height: 100%;
@@ -411,8 +397,8 @@
       }
       .showcase-card {
         flex: 0 0 280px;
-        background: var(--bg2);
-        border: 1px solid var(--teal-border);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 229, 255, 0.1);
         border-radius: 8px;
         padding: 1.5rem;
         margin-right: 0;
@@ -431,17 +417,23 @@
         width: 4px;
         background: var(--teal);
         border-radius: 999px;
+        opacity: 0.7;
       }
       .showcase-card:hover {
-        background: var(--bg3);
+        background: rgba(255, 255, 255, 0.06);
       }
       .showcase-card-content {
         position: relative;
         z-index: 1;
       }
-      .showcase-card .item-label,
       .showcase-card .item-title {
         margin: 0;
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--white);
+        line-height: 1.2;
       }
       .showcase-card p {
         color: var(--white2);
@@ -1074,47 +1066,38 @@
             <div class="showcase-left scroll-up">
               <div class="scroll-up-inner">
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_001</div>
                   <div class="item-title">SCDS</div>
                   <div class="item-divider"></div>
                 </div>
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_002</div>
                   <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
                   <div class="item-divider"></div>
                 </div>
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_003</div>
                   <div class="item-title">FINANCE TRACKER</div>
                   <div class="item-divider"></div>
                 </div>
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_001</div>
                   <div class="item-title">SCDS</div>
                   <div class="item-divider"></div>
                 </div>
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_002</div>
                   <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
                   <div class="item-divider"></div>
                 </div>
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_003</div>
                   <div class="item-title">FINANCE TRACKER</div>
                   <div class="item-divider"></div>
                 </div>
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_001</div>
                   <div class="item-title">SCDS</div>
                   <div class="item-divider"></div>
                 </div>
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_002</div>
                   <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
                   <div class="item-divider"></div>
                 </div>
                 <div class="showcase-item">
-                  <div class="item-label">PROJECT_003</div>
                   <div class="item-title">FINANCE TRACKER</div>
                   <div class="item-divider"></div>
                 </div>
@@ -1124,7 +1107,6 @@
               <div class="scroll-left-inner">
                 <div class="showcase-card" onclick="openProjectModal(1)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_001</div>
                     <div class="item-title">SCDS</div>
                     <p>
                       Backend-driven capstone app. Data management, scripting
@@ -1146,7 +1128,6 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_002</div>
                     <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
                     <p>
                       Academic performance tracking and analysis tool for
@@ -1167,7 +1148,6 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(0)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_003</div>
                     <div class="item-title">FINANCE TRACKER</div>
                     <p>
                       Full-stack finance app with auth, budgets, debt tracking
@@ -1193,7 +1173,6 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(1)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_001</div>
                     <div class="item-title">SCDS</div>
                     <p>
                       Backend-driven capstone app. Data management, scripting
@@ -1215,7 +1194,6 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_002</div>
                     <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
                     <p>
                       Academic performance tracking and analysis tool for
@@ -1236,7 +1214,6 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(0)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_003</div>
                     <div class="item-title">FINANCE TRACKER</div>
                     <p>
                       Full-stack finance app with auth, budgets, debt tracking
@@ -1262,7 +1239,6 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(1)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_001</div>
                     <div class="item-title">SCDS</div>
                     <p>
                       Backend-driven capstone app. Data management, scripting
@@ -1284,7 +1260,6 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_002</div>
                     <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
                     <p>
                       Academic performance tracking and analysis tool for
@@ -1305,7 +1280,6 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(0)">
                   <div class="showcase-card-content">
-                    <div class="item-label">PROJECT_003</div>
                     <div class="item-title">FINANCE TRACKER</div>
                     <p>
                       Full-stack finance app with auth, budgets, debt tracking
