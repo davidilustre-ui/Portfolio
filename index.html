@@ -327,7 +327,11 @@
       }
       .showcase-left::before {
         top: 0;
-        background: linear-gradient(180deg, rgba(4, 8, 15, 1), rgba(4, 8, 15, 0));
+        background: linear-gradient(
+          180deg,
+          rgba(4, 8, 15, 1),
+          rgba(4, 8, 15, 0)
+        );
       }
       .showcase-left::after {
         bottom: 0;
@@ -378,11 +382,19 @@
       }
       .showcase-right::before {
         left: 0;
-        background: linear-gradient(90deg, rgba(4, 8, 15, 1), rgba(4, 8, 15, 0));
+        background: linear-gradient(
+          90deg,
+          rgba(4, 8, 15, 1),
+          rgba(4, 8, 15, 0)
+        );
       }
       .showcase-right::after {
         right: 0;
-        background: linear-gradient(270deg, rgba(4, 8, 15, 1), rgba(4, 8, 15, 0));
+        background: linear-gradient(
+          270deg,
+          rgba(4, 8, 15, 1),
+          rgba(4, 8, 15, 0)
+        );
       }
       .scroll-left {
         height: 100%;
@@ -748,8 +760,12 @@
         flex-shrink: 0;
       }
       @keyframes scrollLeftModal {
-        from { transform: translateX(0); }
-        to { transform: translateX(-50%); }
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
       }
       .modal-screenshots.scroll-left:hover .scroll-left-inner {
         animation-play-state: paused;
@@ -1076,7 +1092,10 @@
             <div class="section-line"></div>
           </div>
           <div class="projects-showcase">
-            <div class="showcase-right scroll-left" style="margin:0 auto; max-width:920px;">
+            <div
+              class="showcase-right scroll-left"
+              style="margin: 0 auto; max-width: 920px"
+            >
               <div class="scroll-left-inner">
                 <div class="showcase-card" onclick="openProjectModal(1)">
                   <div class="showcase-card-content">
@@ -1091,7 +1110,12 @@
                       <span class="tag">HTML</span>
                       <span class="tag">CSS</span>
                     </div>
-                    <button class="view-details-btn" onclick="openProjectModal(1)">View Details →</button>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(1)"
+                    >
+                      View Details →
+                    </button>
                   </div>
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
@@ -1106,7 +1130,12 @@
                       <span class="tag">FLASK</span>
                       <span class="tag">POSTGRESQL</span>
                     </div>
-                    <button class="view-details-btn" onclick="openProjectModal(2)">View Details →</button>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(2)"
+                    >
+                      View Details →
+                    </button>
                   </div>
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(0)">
@@ -1122,43 +1151,78 @@
                       <span class="tag">SUPABASE</span>
                       <span class="tag">VERCEL</span>
                     </div>
-                    <img src="./images/ft-dashboard.png" alt="Finance Tracker Dashboard" />
-                    <button class="view-details-btn" onclick="openProjectModal(0)">View Details →</button>
+                    <img
+                      src="./images/ft-dashboard.png"
+                      alt="Finance Tracker Dashboard"
+                    />
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(0)"
+                    >
+                      View Details →
+                    </button>
                   </div>
                 </div>
                 <!-- repeated sequence for seamless loop -->
                 <div class="showcase-card" onclick="openProjectModal(1)">
                   <div class="showcase-card-content">
                     <div class="item-title">SCDS</div>
-                    <p>Backend-driven capstone app. Data management, scripting and automation.</p>
+                    <p>
+                      Backend-driven capstone app. Data management, scripting
+                      and automation.
+                    </p>
                     <div class="tags">
                       <span class="tag">PYTHON</span>
                       <span class="tag">FLASK</span>
                     </div>
-                    <button class="view-details-btn" onclick="openProjectModal(1)">View Details →</button>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(1)"
+                    >
+                      View Details →
+                    </button>
                   </div>
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
                   <div class="showcase-card-content">
                     <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
-                    <p>Academic performance tracking and analysis tool for educators.</p>
+                    <p>
+                      Academic performance tracking and analysis tool for
+                      educators.
+                    </p>
                     <div class="tags">
                       <span class="tag">PYTHON</span>
                       <span class="tag">FLASK</span>
                     </div>
-                    <button class="view-details-btn" onclick="openProjectModal(2)">View Details →</button>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(2)"
+                    >
+                      View Details →
+                    </button>
                   </div>
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(0)">
                   <div class="showcase-card-content">
                     <div class="item-title">FINANCE TRACKER</div>
-                    <p>Full-stack finance app with auth, budgets, debt tracking and reports.</p>
+                    <p>
+                      Full-stack finance app with auth, budgets, debt tracking
+                      and reports.
+                    </p>
                     <div class="tags">
                       <span class="tag">NEXT.JS</span>
                       <span class="tag">REACT</span>
                     </div>
-                    <img src="./images/ft-dashboard.png" alt="Finance Tracker Dashboard" />
-                    <button class="view-details-btn" onclick="openProjectModal(0)">View Details →</button>
+                    <img
+                      src="./images/ft-dashboard.png"
+                      alt="Finance Tracker Dashboard"
+                    />
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(0)"
+                    >
+                      View Details →
+                    </button>
                   </div>
                 </div>
               </div>
