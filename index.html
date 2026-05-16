@@ -28,6 +28,14 @@
         --radius: 20px;
         --font-sans: 'Inter', sans-serif;
         --font-heading: 'DM Sans', sans-serif;
+        --font-display: 'DM Sans', sans-serif;
+        --font-mono: 'Courier New', monospace;
+        --teal: #00e5ff;
+        --teal-border: rgba(0, 229, 255, 0.25);
+        --bg2: #102a43;
+        --bg3: #0d2436;
+        --white: #ffffff;
+        --white2: rgba(255, 255, 255, 0.85);
       }
 
       *,
@@ -290,6 +298,199 @@
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
 
+      .projects-showcase {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 1rem;
+        height: 420px;
+        overflow: hidden;
+        position: relative;
+      }
+      .showcase-left,
+      .showcase-right {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+      }
+      .showcase-left {
+        background: linear-gradient(
+          180deg,
+          rgba(16, 42, 67, 0.97),
+          rgba(16, 42, 67, 0.95)
+        );
+        padding: 1.5rem 1rem;
+      }
+      .showcase-left::before,
+      .showcase-left::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 76px;
+        pointer-events: none;
+      }
+      .showcase-left::before {
+        top: 0;
+        background: linear-gradient(180deg, var(--bg), rgba(16, 42, 67, 0));
+      }
+      .showcase-left::after {
+        bottom: 0;
+        background: linear-gradient(0deg, var(--bg), rgba(16, 42, 67, 0));
+      }
+      .scroll-up {
+        height: 100%;
+        overflow: hidden;
+      }
+      .scroll-up-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        animation: scrollUp 8s linear infinite;
+      }
+      .showcase-item {
+        padding-right: 0.5rem;
+      }
+      .showcase-item .item-label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--teal);
+        letter-spacing: 0.1em;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+      }
+      .showcase-item .item-title {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--white);
+        line-height: 1.2;
+      }
+      .showcase-item .item-divider {
+        width: 100%;
+        height: 1px;
+        background: rgba(0, 229, 255, 0.1);
+        margin: 16px 0;
+      }
+
+      .showcase-right {
+        background: linear-gradient(
+          90deg,
+          rgba(16, 42, 67, 0.95),
+          rgba(16, 42, 67, 0.95)
+        );
+        padding: 1.5rem 1rem;
+      }
+      .showcase-right::before,
+      .showcase-right::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 72px;
+        pointer-events: none;
+      }
+      .showcase-right::before {
+        left: 0;
+        background: linear-gradient(90deg, var(--bg), rgba(16, 42, 67, 0));
+      }
+      .showcase-right::after {
+        right: 0;
+        background: linear-gradient(270deg, var(--bg), rgba(16, 42, 67, 0));
+      }
+      .scroll-left {
+        height: 100%;
+        overflow: hidden;
+      }
+      .scroll-left-inner {
+        display: flex;
+        align-items: stretch;
+        gap: 16px;
+        animation: scrollLeft 20s linear infinite;
+        padding-bottom: 1rem;
+      }
+      .showcase-card {
+        flex: 0 0 280px;
+        background: var(--bg2);
+        border: 1px solid var(--teal-border);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-right: 0;
+        position: relative;
+        cursor: pointer;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+      .showcase-card::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 12px;
+        bottom: 12px;
+        width: 4px;
+        background: var(--teal);
+        border-radius: 999px;
+      }
+      .showcase-card:hover {
+        background: var(--bg3);
+      }
+      .showcase-card-content {
+        position: relative;
+        z-index: 1;
+      }
+      .showcase-card .item-label,
+      .showcase-card .item-title {
+        margin: 0;
+      }
+      .showcase-card p {
+        color: var(--white2);
+        font-size: 13px;
+        line-height: 1.7;
+        margin: 0.9rem 0 0;
+      }
+      .showcase-card .tags {
+        margin-top: 1rem;
+      }
+      .showcase-card img {
+        width: 100%;
+        border-radius: 4px;
+        margin-top: 0.75rem;
+        border: 1px solid rgba(0, 229, 255, 0.15);
+      }
+      .showcase-card .view-details-btn {
+        margin-top: 1rem;
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .showcase-card .view-details-btn:hover {
+        color: var(--teal);
+        border-color: var(--teal);
+        background: rgba(0, 229, 255, 0.12);
+      }
+
+      @keyframes scrollUp {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-33.333%);
+        }
+      }
+      @keyframes scrollLeft {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-33.333%);
+        }
+      }
+      .scroll-left:hover .scroll-left-inner,
+      .scroll-up:hover .scroll-up-inner {
+        animation-play-state: paused;
+      }
+
       .project-card,
       .skill-item,
       .experience-item,
@@ -390,7 +591,9 @@
       .cert-card,
       .contact-card,
       .gallery-card {
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
       }
 
       .modal-overlay {
@@ -559,7 +762,7 @@
         margin-bottom: 4px;
       }
       .bar-track {
-        background: rgba(255,255,255,0.04);
+        background: rgba(255, 255, 255, 0.04);
         height: 3px;
       }
       .bar-fill {
@@ -649,7 +852,9 @@
         display: flex;
         align-items: center;
         gap: 0.85rem;
-        transition: transform 0.2s ease, border-color 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease;
       }
 
       .contact-card:hover {
@@ -732,6 +937,43 @@
         .hero-intro h1 {
           font-size: 2.8rem;
         }
+
+        .projects-showcase {
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+
+        .showcase-left,
+        .showcase-right {
+          height: auto;
+          min-height: auto;
+        }
+
+        .showcase-left {
+          height: 120px;
+          padding: 1rem;
+        }
+
+        .showcase-right {
+          height: 280px;
+          padding: 1rem;
+        }
+
+        .scroll-up-inner {
+          flex-direction: row;
+          align-items: center;
+          gap: 1rem;
+          animation: scrollLeft 8s linear infinite;
+        }
+
+        .showcase-item {
+          min-width: 260px;
+          padding-right: 1rem;
+        }
+
+        .scroll-left-inner {
+          padding-bottom: 0;
+        }
       }
     </style>
   </head>
@@ -753,7 +995,6 @@
         </div>
       </nav>
       <main>
-
         <section class="hero">
           <div class="hero-intro">
             <p class="label">
@@ -829,82 +1070,266 @@
             <h2 class="section-title">Projects</h2>
             <div class="section-line"></div>
           </div>
-          <div class="projects-grid">
-            <div class="project-card">
-              <h3>Finance Tracker</h3>
-              <p>
-                A production-deployed finance application with authentication,
-                dashboard reporting, budgeting tools, debt tracking, and
-                exportable monthly reports for business users.
-              </p>
-              <div class="tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">React</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">PostgreSQL</span>
+          <div class="projects-showcase">
+            <div class="showcase-left scroll-up">
+              <div class="scroll-up-inner">
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_001</div>
+                  <div class="item-title">SCDS</div>
+                  <div class="item-divider"></div>
+                </div>
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_002</div>
+                  <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                  <div class="item-divider"></div>
+                </div>
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_003</div>
+                  <div class="item-title">FINANCE TRACKER</div>
+                  <div class="item-divider"></div>
+                </div>
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_001</div>
+                  <div class="item-title">SCDS</div>
+                  <div class="item-divider"></div>
+                </div>
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_002</div>
+                  <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                  <div class="item-divider"></div>
+                </div>
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_003</div>
+                  <div class="item-title">FINANCE TRACKER</div>
+                  <div class="item-divider"></div>
+                </div>
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_001</div>
+                  <div class="item-title">SCDS</div>
+                  <div class="item-divider"></div>
+                </div>
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_002</div>
+                  <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                  <div class="item-divider"></div>
+                </div>
+                <div class="showcase-item">
+                  <div class="item-label">PROJECT_003</div>
+                  <div class="item-title">FINANCE TRACKER</div>
+                  <div class="item-divider"></div>
+                </div>
               </div>
-              <div class="meta-row">
-                <span>Deployment</span><strong>Vercel</strong>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://finance-tracker-sigma-silk-37.vercel.app"
-                  target="_blank"
-                  >Live demo</a
-                ><a
-                  href="https://github.com/davidilustre-ui/finance-tracker"
-                  target="_blank"
-                  >Code</a
-                >
-              </div>
-              <button class="view-details-btn" onclick="openProjectModal(0)">View Details →</button>
             </div>
-
-            <div class="project-card">
-              <h3>SCDS Capstone System</h3>
-              <p>
-                A backend-oriented application built with Python and Flask for
-                data management, scripting, and workflow automation.
-              </p>
-              <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Flask</span>
-                <span class="tag">HTML</span>
+            <div class="showcase-right scroll-left">
+              <div class="scroll-left-inner">
+                <div class="showcase-card" onclick="openProjectModal(1)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_001</div>
+                    <div class="item-title">SCDS</div>
+                    <p>
+                      Backend-driven capstone app. Data management, scripting
+                      and automation.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">HTML</span>
+                      <span class="tag">CSS</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(1)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(2)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_002</div>
+                    <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                    <p>
+                      Academic performance tracking and analysis tool for
+                      educators.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">POSTGRESQL</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(2)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(0)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_003</div>
+                    <div class="item-title">FINANCE TRACKER</div>
+                    <p>
+                      Full-stack finance app with auth, budgets, debt tracking
+                      and reports.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">NEXT.JS</span>
+                      <span class="tag">REACT</span>
+                      <span class="tag">SUPABASE</span>
+                      <span class="tag">VERCEL</span>
+                    </div>
+                    <img
+                      src="./images/ft-dashboard.png"
+                      alt="Finance Tracker Dashboard"
+                    />
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(0)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(1)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_001</div>
+                    <div class="item-title">SCDS</div>
+                    <p>
+                      Backend-driven capstone app. Data management, scripting
+                      and automation.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">HTML</span>
+                      <span class="tag">CSS</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(1)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(2)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_002</div>
+                    <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                    <p>
+                      Academic performance tracking and analysis tool for
+                      educators.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">POSTGRESQL</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(2)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(0)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_003</div>
+                    <div class="item-title">FINANCE TRACKER</div>
+                    <p>
+                      Full-stack finance app with auth, budgets, debt tracking
+                      and reports.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">NEXT.JS</span>
+                      <span class="tag">REACT</span>
+                      <span class="tag">SUPABASE</span>
+                      <span class="tag">VERCEL</span>
+                    </div>
+                    <img
+                      src="./images/ft-dashboard.png"
+                      alt="Finance Tracker Dashboard"
+                    />
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(0)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(1)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_001</div>
+                    <div class="item-title">SCDS</div>
+                    <p>
+                      Backend-driven capstone app. Data management, scripting
+                      and automation.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">HTML</span>
+                      <span class="tag">CSS</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(1)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(2)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_002</div>
+                    <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                    <p>
+                      Academic performance tracking and analysis tool for
+                      educators.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">POSTGRESQL</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(2)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(0)">
+                  <div class="showcase-card-content">
+                    <div class="item-label">PROJECT_003</div>
+                    <div class="item-title">FINANCE TRACKER</div>
+                    <p>
+                      Full-stack finance app with auth, budgets, debt tracking
+                      and reports.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">NEXT.JS</span>
+                      <span class="tag">REACT</span>
+                      <span class="tag">SUPABASE</span>
+                      <span class="tag">VERCEL</span>
+                    </div>
+                    <img
+                      src="./images/ft-dashboard.png"
+                      alt="Finance Tracker Dashboard"
+                    />
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(0)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div class="meta-row">
-                <span>Focus</span><strong>Data automation</strong>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/davidilustre-ui/SCDS"
-                  target="_blank"
-                  >View code</a
-                >
-              </div>
-              <button class="view-details-btn" onclick="openProjectModal(1)">View Details →</button>
-            </div>
-
-            <div class="project-card">
-              <h3>Student Performance System</h3>
-              <p>
-                An academic performance tracking system that supports reporting
-                and analysis for educational stakeholders.
-              </p>
-              <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Analytics</span>
-              </div>
-              <div class="meta-row">
-                <span>Outcome</span><strong>Insights for decisions</strong>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://github.com/davidilustre-ui/student-performance"
-                  target="_blank"
-                  >View code</a
-                >
-              </div>
-              <button class="view-details-btn" onclick="openProjectModal(2)">View Details →</button>
             </div>
           </div>
         </section>
@@ -932,7 +1357,10 @@
               <span>Main dashboard with summaries and balances</span>
             </div>
             <div class="gallery-card">
-              <img src="./images/ft-reports.png" alt="Finance Tracker Reports" />
+              <img
+                src="./images/ft-reports.png"
+                alt="Finance Tracker Reports"
+              />
               <span>Monthly reporting and export-ready data</span>
             </div>
             <div class="gallery-card">
@@ -1107,11 +1535,17 @@
     </div>
 
     <!-- Project Details Modal -->
-    <div class="modal-overlay" id="projectModal" onclick="closeProjectModal(event)">
+    <div
+      class="modal-overlay"
+      id="projectModal"
+      onclick="closeProjectModal(event)"
+    >
       <div class="modal-container" onclick="event.stopPropagation()">
         <div class="modal-header">
           <h2 id="modalTitle">Project Title</h2>
-          <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+          <button class="modal-close" onclick="closeProjectModal()">
+            &times;
+          </button>
         </div>
         <div class="modal-body">
           <div class="modal-sidebar">
@@ -1131,7 +1565,14 @@
           <div class="modal-content">
             <!-- Project 0: Finance Tracker -->
             <div class="modal-project active" data-project="0">
-              <p class="modal-description">A production-deployed full-stack personal finance web app. Features email/password auth, income and expense tracking, budget management with progress bars, debt tracker with payoff estimates, and downloadable monthly financial reports in Philippine Peso. Built with Next.js, React, and Supabase — fully live.</p>
+              <p class="modal-description">
+                A production-deployed full-stack personal finance web app.
+                Features email/password auth, income and expense tracking,
+                budget management with progress bars, debt tracker with payoff
+                estimates, and downloadable monthly financial reports in
+                Philippine Peso. Built with Next.js, React, and Supabase — fully
+                live.
+              </p>
               <div class="modal-tags">
                 <span class="tag">NEXT.JS</span>
                 <span class="tag">REACT</span>
@@ -1141,16 +1582,32 @@
               </div>
               <div class="modal-bars">
                 <div class="bar-row">
-                  <div class="bar-label"><span>JavaScript / React</span><span>72%</span></div>
-                  <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+                  <div class="bar-label">
+                    <span>JavaScript / React</span><span>72%</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill" style="width: 72%"></div>
+                  </div>
                 </div>
                 <div class="bar-row">
                   <div class="bar-label"><span>CSS</span><span>18%</span></div>
-                  <div class="bar-track"><div class="bar-fill" style="width:18%; background: #5c9fff;"></div></div>
+                  <div class="bar-track">
+                    <div
+                      class="bar-fill"
+                      style="width: 18%; background: #5c9fff"
+                    ></div>
+                  </div>
                 </div>
                 <div class="bar-row">
-                  <div class="bar-label"><span>SQL / Supabase</span><span>10%</span></div>
-                  <div class="bar-track"><div class="bar-fill" style="width:10%; background: #00e676;"></div></div>
+                  <div class="bar-label">
+                    <span>SQL / Supabase</span><span>10%</span>
+                  </div>
+                  <div class="bar-track">
+                    <div
+                      class="bar-fill"
+                      style="width: 10%; background: #00e676"
+                    ></div>
+                  </div>
                 </div>
               </div>
               <div class="modal-screenshots">
@@ -1160,14 +1617,27 @@
                 <img src="./images/ft-debt.png" alt="Debt" />
               </div>
               <div class="modal-links">
-                <a href="https://finance-tracker-sigma-silk-37.vercel.app" target="_blank">Live Demo →</a>
-                <a href="https://github.com/davidilustre-ui/finance-tracker" target="_blank">View Code →</a>
+                <a
+                  href="https://finance-tracker-sigma-silk-37.vercel.app"
+                  target="_blank"
+                  >Live Demo →</a
+                >
+                <a
+                  href="https://github.com/davidilustre-ui/finance-tracker"
+                  target="_blank"
+                  >View Code →</a
+                >
               </div>
             </div>
 
             <!-- Project 1: SCDS -->
             <div class="modal-project" data-project="1">
-              <p class="modal-description">A full backend-driven capstone web application built with Python and Flask, covering data management, scripting, and automation. Built as a college capstone project demonstrating backend architecture and database management.</p>
+              <p class="modal-description">
+                A full backend-driven capstone web application built with Python
+                and Flask, covering data management, scripting, and automation.
+                Built as a college capstone project demonstrating backend
+                architecture and database management.
+              </p>
               <div class="modal-tags">
                 <span class="tag">PYTHON</span>
                 <span class="tag">FLASK</span>
@@ -1177,22 +1647,42 @@
               </div>
               <div class="modal-bars">
                 <div class="bar-row">
-                  <div class="bar-label"><span>Python</span><span>94.7%</span></div>
-                  <div class="bar-track"><div class="bar-fill" style="width:94.7%"></div></div>
+                  <div class="bar-label">
+                    <span>Python</span><span>94.7%</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill" style="width: 94.7%"></div>
+                  </div>
                 </div>
                 <div class="bar-row">
-                  <div class="bar-label"><span>HTML</span><span>5.0%</span></div>
-                  <div class="bar-track"><div class="bar-fill" style="width:5%; background: #5c9fff;"></div></div>
+                  <div class="bar-label">
+                    <span>HTML</span><span>5.0%</span>
+                  </div>
+                  <div class="bar-track">
+                    <div
+                      class="bar-fill"
+                      style="width: 5%; background: #5c9fff"
+                    ></div>
+                  </div>
                 </div>
               </div>
               <div class="modal-links">
-                <a href="https://github.com/davidilustre-ui/SCDS" target="_blank">View Code →</a>
+                <a
+                  href="https://github.com/davidilustre-ui/SCDS"
+                  target="_blank"
+                  >View Code →</a
+                >
               </div>
             </div>
 
             <!-- Project 2: Student Performance -->
             <div class="modal-project" data-project="2">
-              <p class="modal-description">A school research project that tracks and analyzes student academic performance data to support insights and reporting for educators and administrators. Built with Python and Flask with a data-driven approach to academic analysis.</p>
+              <p class="modal-description">
+                A school research project that tracks and analyzes student
+                academic performance data to support insights and reporting for
+                educators and administrators. Built with Python and Flask with a
+                data-driven approach to academic analysis.
+              </p>
               <div class="modal-tags">
                 <span class="tag">PYTHON</span>
                 <span class="tag">FLASK</span>
@@ -1202,16 +1692,31 @@
               </div>
               <div class="modal-bars">
                 <div class="bar-row">
-                  <div class="bar-label"><span>Python</span><span>84.0%</span></div>
-                  <div class="bar-track"><div class="bar-fill" style="width:84%"></div></div>
+                  <div class="bar-label">
+                    <span>Python</span><span>84.0%</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill" style="width: 84%"></div>
+                  </div>
                 </div>
                 <div class="bar-row">
-                  <div class="bar-label"><span>HTML</span><span>16.0%</span></div>
-                  <div class="bar-track"><div class="bar-fill" style="width:16%; background: #5c9fff;"></div></div>
+                  <div class="bar-label">
+                    <span>HTML</span><span>16.0%</span>
+                  </div>
+                  <div class="bar-track">
+                    <div
+                      class="bar-fill"
+                      style="width: 16%; background: #5c9fff"
+                    ></div>
+                  </div>
                 </div>
               </div>
               <div class="modal-links">
-                <a href="https://github.com/davidilustre-ui/student-performance" target="_blank">View Code →</a>
+                <a
+                  href="https://github.com/davidilustre-ui/student-performance"
+                  target="_blank"
+                  >View Code →</a
+                >
               </div>
             </div>
           </div>
@@ -1239,20 +1744,27 @@
 
       function switchProject(projectIndex) {
         currentProject = projectIndex;
-        
+
         // Update sidebar items
-        document.querySelectorAll('.modal-sidebar-item').forEach((item, idx) => {
-          item.classList.toggle('active', idx === projectIndex);
-        });
-        
+        document
+          .querySelectorAll('.modal-sidebar-item')
+          .forEach((item, idx) => {
+            item.classList.toggle('active', idx === projectIndex);
+          });
+
         // Update project content
         document.querySelectorAll('.modal-project').forEach((project, idx) => {
           project.classList.toggle('active', idx === projectIndex);
         });
-        
+
         // Update title
-        const titles = ['Finance Tracker', 'SCDS Capstone System', 'Student Performance System'];
-        document.getElementById('modalTitle').textContent = titles[projectIndex];
+        const titles = [
+          'Finance Tracker',
+          'SCDS Capstone System',
+          'Student Performance System',
+        ];
+        document.getElementById('modalTitle').textContent =
+          titles[projectIndex];
       }
 
       // Close modal with ESC key
