@@ -1,416 +1,295 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Ilustre | Salesforce & Full-Stack Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f5f7fb;
-      --surface: #ffffff;
-      --surface-soft: #f0f4f8;
-      --text: #102a43;
-      --muted: #5b7083;
-      --accent: #2563eb;
-      --accent-soft: rgba(37, 99, 235, 0.12);
-      --border: #d9e2ec;
-      --shadow: 0 24px 50px rgba(15, 23, 42, 0.08);
-      --radius: 20px;
-      --font-sans: 'Inter', sans-serif;
-      --font-heading: 'DM Sans', sans-serif;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: var(--font-sans);
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.7;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 30%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 2rem));
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 0;
-    }
-
-    .site-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
-    .logo-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: var(--accent);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .site-title {
-      font-family: var(--font-heading);
-      font-size: 0.95rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.1rem;
-    }
-
-    .nav-links a {
-      font-size: 0.94rem;
-      color: var(--muted);
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .hero {
-      padding: 4rem 0 3rem;
-      display: grid;
-      gap: 2rem;
-    }
-
-    .hero-intro {
-      max-width: 650px;
-    }
-
-    .hero-intro .label {
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .hero-intro h1 {
-      font-family: var(--font-heading);
-      font-size: clamp(3rem, 5vw, 4.8rem);
-      line-height: 1.02;
-      margin-bottom: 1rem;
-    }
-
-    .hero-intro .lead {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 640px;
-      margin-bottom: 1.75rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.95rem 1.6rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      background: #1d4ed8;
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent-soft);
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .section {
-      padding: 3.5rem 0;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-      flex-wrap: wrap;
-    }
-
-    .section-label {
-      font-family: var(--font-heading);
-      font-size: 0.88rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      color: var(--text);
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      min-width: 160px;
-    }
-
-    .about-text {
-      max-width: 720px;
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.9;
-    }
-
-    .projects-grid,
-    .skills-grid,
-    .cert-grid,
-    .experience-list,
-    .contact-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .projects-grid {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .project-card,
-    .skill-item,
-    .experience-item,
-    .cert-card,
-    .contact-card {
-      padding: 1.6rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-    }
-
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-    }
-
-    .project-card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-    }
-
-    .project-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.75;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .tag {
-      font-size: 0.76rem;
-      color: var(--accent);
-      border: 1px solid rgba(37, 99, 235, 0.25);
-      background: rgba(37, 99, 235, 0.08);
-      border-radius: 999px;
-      padding: 0.45rem 0.75rem;
-    }
-
-    .meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .project-links {
-      margin-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      color: var(--accent);
-      font-size: 0.92rem;
-      font-weight: 600;
-    }
-
-    .skill-item {
-      display: grid;
-      gap: 0.45rem;
-    }
-
-    .skill-item strong {
-      font-size: 1rem;
-      color: var(--text);
-    }
-
-    .skill-item span {
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    .exp-role {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .exp-company {
-      color: var(--accent);
-      font-size: 0.92rem;
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-
-    .exp-period {
-      font-size: 0.83rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-    }
-
-    .exp-desc {
-      color: var(--muted);
-      line-height: 1.85;
-    }
-
-    .cert-card .cert-issuer {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: 0.18em;
-      margin-bottom: 0.5rem;
-    }
-
-    .cert-card .cert-name {
-      font-family: var(--font-heading);
-      font-size: 0.98rem;
-      line-height: 1.4;
-    }
-
-    .contact-card {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-1px);
-      border-color: var(--accent);
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .footer {
-      padding: 2rem 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    @media (max-width: 860px) {
-      .hero {
-        padding-top: 3rem;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="David Ilustre is a Salesforce and full-stack developer delivering business-ready CRM solutions, secure web applications, and enterprise-grade automation." />
+    <title>David Ilustre | Salesforce & Full-Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --surface: #ffffff;
+        --surface-soft: #f0f4f8;
+        --text: #102a43;
+        --muted: #5b7083;
+        --accent: #2563eb;
+        --accent-soft: rgba(37, 99, 235, 0.12);
+        --border: #d9e2ec;
+        --shadow: 0 24px 50px rgba(15, 23, 42, 0.08);
+        --radius: 20px;
+        --font-sans: 'Inter', sans-serif;
+        --font-heading: 'DM Sans', sans-serif;
       }
 
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-    }
 
-    @media (max-width: 620px) {
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        font-family: var(--font-sans);
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.7;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(
+          circle at top,
+          rgba(37, 99, 235, 0.08),
+          transparent 30%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
       nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.2rem 0;
+      }
+
+      .site-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .logo-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        background: var(--accent);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+      }
+
+      .site-title {
+        font-family: var(--font-heading);
+        font-size: 0.95rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text);
       }
 
       .nav-links {
-        width: 100%;
-        justify-content: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.1rem;
+      }
+
+      .nav-links a {
+        font-size: 0.94rem;
+        color: var(--muted);
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .hero {
+        padding: 4rem 0 3rem;
+        display: grid;
+        gap: 2rem;
+      }
+
+      .hero-intro {
+        max-width: 650px;
+      }
+
+      .hero-intro .label {
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+
+      .hero-intro h1 {
+        font-family: var(--font-heading);
+        font-size: clamp(3rem, 5vw, 4.8rem);
+        line-height: 1.02;
+        margin-bottom: 1rem;
+      }
+
+      .hero-intro .lead {
+        font-size: 1.05rem;
+        color: var(--muted);
+        max-width: 640px;
+        margin-bottom: 1.75rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.95rem 1.6rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        background: #1d4ed8;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .btn-secondary:hover {
+        background: var(--accent-soft);
+      }
+
+      .hero-highlights {
+        display: grid;
+        gap: 0.75rem;
+        padding: 1.25rem 0 0;
+        list-style: none;
+        max-width: 700px;
+      }
+
+      .hero-highlights li {
+        font-size: 0.97rem;
+        color: var(--muted);
+        line-height: 1.8;
+        padding-left: 1.55rem;
+        position: relative;
+      }
+
+      .hero-highlights li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 1.1rem;
+        line-height: 1;
+      }
+
+      .hero-card {
+        padding: 2rem;
+        min-height: fit-content;
+      }
+
+      .project-card:hover,
+      .gallery-card:hover,
+      .contact-card:hover,
+      .experience-item:hover,
+      .cert-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 28px 60px rgba(15, 23, 42, 0.12);
+      }
+
+      .project-card,
+      .skill-item,
+      .experience-item,
+      .cert-card,
+      .contact-card,
+      .gallery-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .section {
+        padding: 3.5rem 0;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.75rem;
+        flex-wrap: wrap;
+      }
+
+      .section-label {
+        font-family: var(--font-heading);
+        font-size: 0.88rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .section-title {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        color: var(--text);
+      }
+
+      .section-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+        min-width: 160px;
+      }
+
+      .about-text {
+        max-width: 720px;
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.9;
       }
 
       .projects-grid,
@@ -418,185 +297,569 @@
       .cert-grid,
       .experience-list,
       .contact-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        gap: 1rem;
       }
 
-      .hero-intro h1 {
-        font-size: 2.8rem;
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <nav>
-      <div class="site-brand">
-        <div class="logo-mark">DI</div>
-        <div class="site-title">David Ilustre</div>
-      </div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
 
-    <section class="hero">
-      <div class="hero-intro">
-        <p class="label">Business-focused Salesforce & Full-Stack Developer</p>
-        <h1>Helping teams scale with reliable CRM and web applications.</h1>
-        <p class="lead">I combine enterprise Salesforce delivery experience with full-stack web development to build polished, secure, and maintainable solutions for growing businesses.</p>
-        <div class="hero-actions">
-          <a href="mailto:mi.ymor2002@gmail.com" class="btn btn-primary">Contact Me</a>
-          <a href="https://github.com/davidilustre-ui" target="_blank" class="btn btn-secondary">View GitHub</a>
+      .project-card,
+      .skill-item,
+      .experience-item,
+      .cert-card,
+      .contact-card {
+        padding: 1.6rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      .project-card h3 {
+        font-family: var(--font-heading);
+        font-size: 1.15rem;
+      }
+
+      .project-card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.75;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .tag {
+        font-size: 0.76rem;
+        color: var(--accent);
+        border: 1px solid rgba(37, 99, 235, 0.25);
+        background: rgba(37, 99, 235, 0.08);
+        border-radius: 999px;
+        padding: 0.45rem 0.75rem;
+      }
+
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .project-links {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        color: var(--accent);
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+
+      .project-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .gallery-card {
+        background: var(--surface-soft);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      }
+
+      .gallery-card img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        height: 180px;
+      }
+
+      .gallery-card span {
+        display: block;
+        padding: 0.95rem 1rem;
+        font-size: 0.92rem;
+        color: var(--text);
+        background: var(--surface);
+      }
+
+      .skill-item span {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .exp-role {
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .exp-company {
+        color: var(--accent);
+        font-size: 0.92rem;
+        margin-bottom: 0.75rem;
+        display: block;
+      }
+
+      .exp-period {
+        font-size: 0.83rem;
+        color: var(--muted);
+        margin-bottom: 0.75rem;
+      }
+
+      .exp-desc {
+        color: var(--muted);
+        line-height: 1.85;
+      }
+
+      .cert-card .cert-issuer {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        color: var(--muted);
+        letter-spacing: 0.18em;
+        margin-bottom: 0.5rem;
+      }
+
+      .cert-card .cert-name {
+        font-family: var(--font-heading);
+        font-size: 0.98rem;
+        line-height: 1.4;
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+
+      .footer {
+        padding: 2rem 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero {
+          padding-top: 3rem;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 620px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        .projects-grid,
+        .skills-grid,
+        .cert-grid,
+        .experience-list,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-intro h1 {
+          font-size: 2.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <div class="site-brand">
+          <div class="logo-mark">DI</div>
+          <div class="site-title">David Ilustre</div>
         </div>
-      </div>
-      <div class="card" style="padding:2rem;">
-        <div class="section-header" style="margin-bottom:1rem; gap:0.75rem;">
-          <span class="section-label">Current focus</span>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#finance-tracker">Gallery</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+      <main>
+
+      <section class="hero">
+        <div class="hero-intro">
+          <p class="label">
+            Business-focused Salesforce & Full-Stack Developer
+          </p>
+          <h1>Helping teams scale with reliable CRM and web applications.</h1>
+          <p class="lead">
+            I combine enterprise Salesforce delivery experience with full-stack
+            web development to build polished, secure, and maintainable
+            solutions for growing businesses.
+          </p>
+          <div class="hero-actions">
+            <a href="mailto:mi.ymor2002@gmail.com" class="btn btn-primary"
+              >Contact Me</a
+            >
+            <a
+              href="https://github.com/davidilustre-ui"
+              target="_blank"
+              class="btn btn-secondary"
+              >View GitHub</a
+            >
+          </div>
+          <ul class="hero-highlights">
+            <li>Delivered Salesforce CRM and automation work for enterprise teams.</li>
+            <li>Built secure full-stack applications with clean UX and reliable architecture.</li>
+            <li>Focus on clear communication, fast delivery, and measurable business value.</li>
+          </ul>
+        </div>
+        <div class="card hero-card">
+          <div class="section-header" style="margin-bottom: 1rem; gap: 0.75rem">
+            <span class="section-label">Current focus</span>
+            <div class="section-line"></div>
+          </div>
+          <p class="about-text">
+            Former Big 4 consultant turned freelance developer. I deliver
+            Salesforce CRM implementations, Lightning web components, Apex
+            automation, and responsive web applications. I focus on measurable
+            outcomes, clear communication, and business-ready solutions.
+          </p>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-header">
+          <span class="section-label">01</span>
+          <h2 class="section-title">About</h2>
           <div class="section-line"></div>
         </div>
-        <p class="about-text">Former Big 4 consultant turned freelance developer. I deliver Salesforce CRM implementations, Lightning web components, Apex automation, and responsive web applications. I focus on measurable outcomes, clear communication, and business-ready solutions.</p>
-      </div>
-    </section>
+        <p class="about-text">
+          I started as a full-stack developer in college building web systems
+          for academic research and business process automation. Since then, I
+          have delivered enterprise-grade Salesforce solutions for clients
+          across South East Asia and created production-ready applications with
+          Next.js, React, Supabase, and Python.
+        </p>
+      </section>
 
-    <section id="about" class="section">
-      <div class="section-header">
-        <span class="section-label">01</span>
-        <h2 class="section-title">About</h2>
-        <div class="section-line"></div>
-      </div>
-      <p class="about-text">I started as a full-stack developer in college building web systems for academic research and business process automation. Since then, I have delivered enterprise-grade Salesforce solutions for clients across South East Asia and created production-ready applications with Next.js, React, Supabase, and Python.</p>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="section-header">
-        <span class="section-label">02</span>
-        <h2 class="section-title">Projects</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3>Finance Tracker</h3>
-          <p>A production-deployed finance application with authentication, dashboard reporting, budgeting tools, debt tracking, and exportable monthly reports for business users.</p>
-          <div class="tags">
-            <span class="tag">Next.js</span>
-            <span class="tag">React</span>
-            <span class="tag">Supabase</span>
-            <span class="tag">PostgreSQL</span>
+      <section id="projects" class="section">
+        <div class="section-header">
+          <span class="section-label">02</span>
+          <h2 class="section-title">Projects</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Finance Tracker</h3>
+            <p>
+              A production-deployed finance application with authentication,
+              dashboard reporting, budgeting tools, debt tracking, and
+              exportable monthly reports for business users.
+            </p>
+            <div class="tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">React</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <div class="meta-row">
+              <span>Deployment</span><strong>Vercel</strong>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://finance-tracker-sigma-silk-37.vercel.app"
+                target="_blank"
+                >Live demo</a
+              ><a
+                href="https://github.com/davidilustre-ui/finance-tracker"
+                target="_blank"
+                >Code</a
+              >
+            </div>
           </div>
-          <div class="meta-row"><span>Deployment</span><strong>Vercel</strong></div>
-          <div class="project-links"><a href="https://finance-tracker-sigma-silk-37.vercel.app" target="_blank">Live demo</a><a href="https://github.com/davidilustre-ui/finance-tracker" target="_blank">Code</a></div>
-        </div>
 
-        <div class="project-card">
-          <h3>SCDS Capstone System</h3>
-          <p>A backend-oriented application built with Python and Flask for data management, scripting, and workflow automation.</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Flask</span>
-            <span class="tag">HTML</span>
+          <div class="project-card">
+            <h3>SCDS Capstone System</h3>
+            <p>
+              A backend-oriented application built with Python and Flask for
+              data management, scripting, and workflow automation.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Flask</span>
+              <span class="tag">HTML</span>
+            </div>
+            <div class="meta-row">
+              <span>Focus</span><strong>Data automation</strong>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/davidilustre-ui/SCDS" target="_blank"
+                >View code</a
+              >
+            </div>
           </div>
-          <div class="meta-row"><span>Focus</span><strong>Data automation</strong></div>
-          <div class="project-links"><a href="https://github.com/davidilustre-ui/SCDS" target="_blank">View code</a></div>
-        </div>
 
-        <div class="project-card">
-          <h3>Student Performance System</h3>
-          <p>An academic performance tracking system that supports reporting and analysis for educational stakeholders.</p>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Analytics</span>
+          <div class="project-card">
+            <h3>Student Performance System</h3>
+            <p>
+              An academic performance tracking system that supports reporting
+              and analysis for educational stakeholders.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Analytics</span>
+            </div>
+            <div class="meta-row">
+              <span>Outcome</span><strong>Insights for decisions</strong>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://github.com/davidilustre-ui/student-performance"
+                target="_blank"
+                >View code</a
+              >
+            </div>
           </div>
-          <div class="meta-row"><span>Outcome</span><strong>Insights for decisions</strong></div>
-          <div class="project-links"><a href="https://github.com/davidilustre-ui/student-performance" target="_blank">View code</a></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="skills" class="section">
-      <div class="section-header">
-        <span class="section-label">03</span>
-        <h2 class="section-title">Skills</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-item"><strong>Salesforce</strong><span>Platform & automation</span></div>
-        <div class="skill-item"><strong>Apex</strong><span>Business logic</span></div>
-        <div class="skill-item"><strong>Lightning</strong><span>LWC & UI</span></div>
-        <div class="skill-item"><strong>JavaScript</strong><span>Frontend development</span></div>
-        <div class="skill-item"><strong>TypeScript</strong><span>Typed applications</span></div>
-        <div class="skill-item"><strong>Python</strong><span>Backend systems</span></div>
-        <div class="skill-item"><strong>Next.js</strong><span>Web applications</span></div>
-        <div class="skill-item"><strong>Flask</strong><span>API services</span></div>
-        <div class="skill-item"><strong>Supabase</strong><span>Database & auth</span></div>
-        <div class="skill-item"><strong>WordPress</strong><span>Web content</span></div>
-        <div class="skill-item"><strong>Scrum</strong><span>Agile delivery</span></div>
-        <div class="skill-item"><strong>LLMs</strong><span>Emerging automation</span></div>
-      </div>
-    </section>
-
-    <section id="experience" class="section">
-      <div class="section-header">
-        <span class="section-label">04</span>
-        <h2 class="section-title">Experience</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="experience-list">
-        <div class="experience-item">
-          <div class="exp-role">Salesforce Consultant</div>
-          <span class="exp-company">PwC South East Asia Consulting</span>
-          <div class="exp-period">Jan 2025 – May 2026 · On-site · Makati, PH</div>
-          <p class="exp-desc">Delivered CRM implementations, Lightning Web Components, Apex automation, and platform configuration for enterprise clients. Worked closely with stakeholders to translate business requirements into scalable solutions.</p>
+      <section id="finance-tracker" class="section">
+        <div class="section-header">
+          <span class="section-label">03</span>
+          <h2 class="section-title">Finance Tracker Gallery</h2>
+          <div class="section-line"></div>
         </div>
-        <div class="experience-item">
-          <div class="exp-role">IT Intern</div>
-          <span class="exp-company">Advanced Learning Programs</span>
-          <div class="exp-period">Mar 2024 – Jul 2024 · Remote · Makati, PH</div>
-          <p class="exp-desc">Supported WordPress development and project delivery using Jira and Scrum. Built web pages and improved workflows for a learning platform.</p>
+        <p class="about-text">
+          A quick visual overview of the Finance Tracker app, showing login,
+          dashboard, reporting, and debt tracking screens.
+        </p>
+        <div class="project-gallery">
+          <div class="gallery-card">
+            <img src="./images/ft-login.png" alt="Finance Tracker Login" />
+            <span>Login and user authentication screen</span>
+          </div>
+          <div class="gallery-card">
+            <img
+              src="./images/ft-dashboard.png"
+              alt="Finance Tracker Dashboard"
+            />
+            <span>Main dashboard with summaries and balances</span>
+          </div>
+          <div class="gallery-card">
+            <img src="./images/ft-reports.png" alt="Finance Tracker Reports" />
+            <span>Monthly reporting and export-ready data</span>
+          </div>
+          <div class="gallery-card">
+            <img
+              src="./images/ft-debt.png"
+              alt="Finance Tracker Debt Tracker"
+            />
+            <span>Debt tracking screen with payoff guidance</span>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="certifications" class="section">
-      <div class="section-header">
-        <span class="section-label">05</span>
-        <h2 class="section-title">Certifications</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="cert-grid">
-        <div class="cert-card"><div class="cert-issuer">Salesforce</div><div class="cert-name">Certified Administrator</div></div>
-        <div class="cert-card"><div class="cert-issuer">Salesforce</div><div class="cert-name">Platform App Builder</div></div>
-        <div class="cert-card"><div class="cert-issuer">Salesforce</div><div class="cert-name">Platform Developer I</div></div>
-        <div class="cert-card"><div class="cert-issuer">Sololearn</div><div class="cert-name">Web Development Fundamentals</div></div>
-        <div class="cert-card"><div class="cert-issuer">Fortinet</div><div class="cert-name">NSE 2: Certified Associate</div></div>
-        <div class="cert-card"><div class="cert-issuer">Fortinet</div><div class="cert-name">NSE 1: Certified Associate</div></div>
-        <div class="cert-card"><div class="cert-issuer">mabl</div><div class="cert-name">Skills Certification: Foundations</div></div>
-      </div>
-    </section>
+      <section id="skills" class="section">
+        <div class="section-header">
+          <span class="section-label">04</span>
+          <h2 class="section-title">Skills</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <strong>Salesforce</strong><span>Platform & automation</span>
+          </div>
+          <div class="skill-item">
+            <strong>Apex</strong><span>Business logic</span>
+          </div>
+          <div class="skill-item">
+            <strong>Lightning</strong><span>LWC & UI</span>
+          </div>
+          <div class="skill-item">
+            <strong>JavaScript</strong><span>Frontend development</span>
+          </div>
+          <div class="skill-item">
+            <strong>TypeScript</strong><span>Typed applications</span>
+          </div>
+          <div class="skill-item">
+            <strong>Python</strong><span>Backend systems</span>
+          </div>
+          <div class="skill-item">
+            <strong>Next.js</strong><span>Web applications</span>
+          </div>
+          <div class="skill-item">
+            <strong>Flask</strong><span>API services</span>
+          </div>
+          <div class="skill-item">
+            <strong>Supabase</strong><span>Database & auth</span>
+          </div>
+          <div class="skill-item">
+            <strong>WordPress</strong><span>Web content</span>
+          </div>
+          <div class="skill-item">
+            <strong>Scrum</strong><span>Agile delivery</span>
+          </div>
+          <div class="skill-item">
+            <strong>LLMs</strong><span>Emerging automation</span>
+          </div>
+        </div>
+      </section>
 
-    <section id="contact" class="section">
-      <div class="section-header">
-        <span class="section-label">06</span>
-        <h2 class="section-title">Contact</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="contact-grid">
-        <a href="mailto:mi.ymor2002@gmail.com" class="contact-card"><span class="dot"></span>mi.ymor2002@gmail.com</a>
-        <a href="https://www.linkedin.com/in/david-ilustre" target="_blank" class="contact-card"><span class="dot"></span>LinkedIn</a>
-        <a href="https://github.com/davidilustre-ui" target="_blank" class="contact-card"><span class="dot"></span>GitHub</a>
-        <a href="https://portfolio-davidilustre-uis-projects.vercel.app" target="_blank" class="contact-card"><span class="dot"></span>Live Portfolio</a>
-        <a href="https://www.salesforce.com/trailblazer/w4olijiqfhlg9ee1qx" target="_blank" class="contact-card"><span class="dot"></span>Trailhead</a>
-      </div>
-    </section>
+      <section id="experience" class="section">
+        <div class="section-header">
+          <span class="section-label">05</span>
+          <h2 class="section-title">Experience</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="experience-list">
+          <div class="experience-item">
+            <div class="exp-role">Salesforce Consultant</div>
+            <span class="exp-company">PwC South East Asia Consulting</span>
+            <div class="exp-period">
+              Jan 2025 – May 2026 · On-site · Makati, PH
+            </div>
+            <p class="exp-desc">
+              Delivered CRM implementations, Lightning Web Components, Apex
+              automation, and platform configuration for enterprise clients.
+              Worked closely with stakeholders to translate business
+              requirements into scalable solutions.
+            </p>
+          </div>
+          <div class="experience-item">
+            <div class="exp-role">IT Intern</div>
+            <span class="exp-company">Advanced Learning Programs</span>
+            <div class="exp-period">
+              Mar 2024 – Jul 2024 · Remote · Makati, PH
+            </div>
+            <p class="exp-desc">
+              Supported WordPress development and project delivery using Jira
+              and Scrum. Built web pages and improved workflows for a learning
+              platform.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <footer class="footer">
-      <p>2026 David Ymor M. Ilustre · Salesforce & Full-Stack Development</p>
-    </footer>
-  </div>
-</body>
+      <section id="certifications" class="section">
+        <div class="section-header">
+          <span class="section-label">06</span>
+          <h2 class="section-title">Certifications</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <div class="cert-issuer">Salesforce</div>
+            <div class="cert-name">Certified Administrator</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-issuer">Salesforce</div>
+            <div class="cert-name">Platform App Builder</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-issuer">Salesforce</div>
+            <div class="cert-name">Platform Developer I</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-issuer">Sololearn</div>
+            <div class="cert-name">Web Development Fundamentals</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-issuer">Fortinet</div>
+            <div class="cert-name">NSE 2: Certified Associate</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-issuer">Fortinet</div>
+            <div class="cert-name">NSE 1: Certified Associate</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-issuer">mabl</div>
+            <div class="cert-name">Skills Certification: Foundations</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="section-header">
+          <span class="section-label">07</span>
+          <h2 class="section-title">Contact</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="contact-grid">
+          <a href="mailto:mi.ymor2002@gmail.com" class="contact-card"
+            ><span class="dot"></span>mi.ymor2002@gmail.com</a
+          >
+          <a
+            href="https://www.linkedin.com/in/david-ilustre"
+            target="_blank"
+            class="contact-card"
+            ><span class="dot"></span>LinkedIn</a
+          >
+          <a
+            href="https://github.com/davidilustre-ui"
+            target="_blank"
+            class="contact-card"
+            ><span class="dot"></span>GitHub</a
+          >
+          <a
+            href="https://portfolio-davidilustre-uis-projects.vercel.app"
+            target="_blank"
+            class="contact-card"
+            ><span class="dot"></span>Live Portfolio</a
+          >
+          <a
+            href="https://www.salesforce.com/trailblazer/w4olijiqfhlg9ee1qx"
+            target="_blank"
+            class="contact-card"
+            ><span class="dot"></span>Trailhead</a
+          >
+        </div>
+      </section>
+
+      </main>
+      <footer class="footer">
+        <p>2026 David Ymor M. Ilustre · Salesforce & Full-Stack Development</p>
+      </footer>
+    </div>
+  </body>
 </html>
-
