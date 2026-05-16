@@ -731,15 +731,28 @@
         margin-bottom: 1.5rem;
       }
       .modal-screenshots {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        /* horizontal scrolling carousel for modal images */
+        overflow: hidden;
         margin-bottom: 1.5rem;
       }
-      .modal-screenshots img {
-        width: 100%;
-        border: 1px solid var(--border);
-        border-radius: 8px;
+      .modal-screenshots.scroll-left .scroll-left-inner {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        animation: scrollLeftModal 12s linear infinite;
+      }
+      .modal-screenshots.scroll-left img {
+        width: 280px;
+        border-radius: 6px;
+        border: 1px solid rgba(0, 229, 255, 0.12);
+        flex-shrink: 0;
+      }
+      @keyframes scrollLeftModal {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      .modal-screenshots.scroll-left:hover .scroll-left-inner {
+        animation-play-state: paused;
       }
 
       .bar-row {
@@ -1063,47 +1076,7 @@
             <div class="section-line"></div>
           </div>
           <div class="projects-showcase">
-            <div class="showcase-left scroll-up">
-              <div class="scroll-up-inner">
-                <div class="showcase-item">
-                  <div class="item-title">SCDS</div>
-                  <div class="item-divider"></div>
-                </div>
-                <div class="showcase-item">
-                  <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
-                  <div class="item-divider"></div>
-                </div>
-                <div class="showcase-item">
-                  <div class="item-title">FINANCE TRACKER</div>
-                  <div class="item-divider"></div>
-                </div>
-                <div class="showcase-item">
-                  <div class="item-title">SCDS</div>
-                  <div class="item-divider"></div>
-                </div>
-                <div class="showcase-item">
-                  <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
-                  <div class="item-divider"></div>
-                </div>
-                <div class="showcase-item">
-                  <div class="item-title">FINANCE TRACKER</div>
-                  <div class="item-divider"></div>
-                </div>
-                <div class="showcase-item">
-                  <div class="item-title">SCDS</div>
-                  <div class="item-divider"></div>
-                </div>
-                <div class="showcase-item">
-                  <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
-                  <div class="item-divider"></div>
-                </div>
-                <div class="showcase-item">
-                  <div class="item-title">FINANCE TRACKER</div>
-                  <div class="item-divider"></div>
-                </div>
-              </div>
-            </div>
-            <div class="showcase-right scroll-left">
+            <div class="showcase-right scroll-left" style="margin:0 auto; max-width:920px;">
               <div class="scroll-left-inner">
                 <div class="showcase-card" onclick="openProjectModal(1)">
                   <div class="showcase-card-content">
@@ -1118,12 +1091,7 @@
                       <span class="tag">HTML</span>
                       <span class="tag">CSS</span>
                     </div>
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(1)"
-                    >
-                      View Details →
-                    </button>
+                    <button class="view-details-btn" onclick="openProjectModal(1)">View Details →</button>
                   </div>
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
@@ -1138,12 +1106,7 @@
                       <span class="tag">FLASK</span>
                       <span class="tag">POSTGRESQL</span>
                     </div>
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(2)"
-                    >
-                      View Details →
-                    </button>
+                    <button class="view-details-btn" onclick="openProjectModal(2)">View Details →</button>
                   </div>
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(0)">
@@ -1159,148 +1122,43 @@
                       <span class="tag">SUPABASE</span>
                       <span class="tag">VERCEL</span>
                     </div>
-                    <img
-                      src="./images/ft-dashboard.png"
-                      alt="Finance Tracker Dashboard"
-                    />
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(0)"
-                    >
-                      View Details →
-                    </button>
+                    <img src="./images/ft-dashboard.png" alt="Finance Tracker Dashboard" />
+                    <button class="view-details-btn" onclick="openProjectModal(0)">View Details →</button>
                   </div>
                 </div>
+                <!-- repeated sequence for seamless loop -->
                 <div class="showcase-card" onclick="openProjectModal(1)">
                   <div class="showcase-card-content">
                     <div class="item-title">SCDS</div>
-                    <p>
-                      Backend-driven capstone app. Data management, scripting
-                      and automation.
-                    </p>
+                    <p>Backend-driven capstone app. Data management, scripting and automation.</p>
                     <div class="tags">
                       <span class="tag">PYTHON</span>
                       <span class="tag">FLASK</span>
-                      <span class="tag">HTML</span>
-                      <span class="tag">CSS</span>
                     </div>
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(1)"
-                    >
-                      View Details →
-                    </button>
+                    <button class="view-details-btn" onclick="openProjectModal(1)">View Details →</button>
                   </div>
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
                   <div class="showcase-card-content">
                     <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
-                    <p>
-                      Academic performance tracking and analysis tool for
-                      educators.
-                    </p>
+                    <p>Academic performance tracking and analysis tool for educators.</p>
                     <div class="tags">
                       <span class="tag">PYTHON</span>
                       <span class="tag">FLASK</span>
-                      <span class="tag">POSTGRESQL</span>
                     </div>
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(2)"
-                    >
-                      View Details →
-                    </button>
+                    <button class="view-details-btn" onclick="openProjectModal(2)">View Details →</button>
                   </div>
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(0)">
                   <div class="showcase-card-content">
                     <div class="item-title">FINANCE TRACKER</div>
-                    <p>
-                      Full-stack finance app with auth, budgets, debt tracking
-                      and reports.
-                    </p>
+                    <p>Full-stack finance app with auth, budgets, debt tracking and reports.</p>
                     <div class="tags">
                       <span class="tag">NEXT.JS</span>
                       <span class="tag">REACT</span>
-                      <span class="tag">SUPABASE</span>
-                      <span class="tag">VERCEL</span>
                     </div>
-                    <img
-                      src="./images/ft-dashboard.png"
-                      alt="Finance Tracker Dashboard"
-                    />
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(0)"
-                    >
-                      View Details →
-                    </button>
-                  </div>
-                </div>
-                <div class="showcase-card" onclick="openProjectModal(1)">
-                  <div class="showcase-card-content">
-                    <div class="item-title">SCDS</div>
-                    <p>
-                      Backend-driven capstone app. Data management, scripting
-                      and automation.
-                    </p>
-                    <div class="tags">
-                      <span class="tag">PYTHON</span>
-                      <span class="tag">FLASK</span>
-                      <span class="tag">HTML</span>
-                      <span class="tag">CSS</span>
-                    </div>
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(1)"
-                    >
-                      View Details →
-                    </button>
-                  </div>
-                </div>
-                <div class="showcase-card" onclick="openProjectModal(2)">
-                  <div class="showcase-card-content">
-                    <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
-                    <p>
-                      Academic performance tracking and analysis tool for
-                      educators.
-                    </p>
-                    <div class="tags">
-                      <span class="tag">PYTHON</span>
-                      <span class="tag">FLASK</span>
-                      <span class="tag">POSTGRESQL</span>
-                    </div>
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(2)"
-                    >
-                      View Details →
-                    </button>
-                  </div>
-                </div>
-                <div class="showcase-card" onclick="openProjectModal(0)">
-                  <div class="showcase-card-content">
-                    <div class="item-title">FINANCE TRACKER</div>
-                    <p>
-                      Full-stack finance app with auth, budgets, debt tracking
-                      and reports.
-                    </p>
-                    <div class="tags">
-                      <span class="tag">NEXT.JS</span>
-                      <span class="tag">REACT</span>
-                      <span class="tag">SUPABASE</span>
-                      <span class="tag">VERCEL</span>
-                    </div>
-                    <img
-                      src="./images/ft-dashboard.png"
-                      alt="Finance Tracker Dashboard"
-                    />
-                    <button
-                      class="view-details-btn"
-                      onclick="openProjectModal(0)"
-                    >
-                      View Details →
-                    </button>
+                    <img src="./images/ft-dashboard.png" alt="Finance Tracker Dashboard" />
+                    <button class="view-details-btn" onclick="openProjectModal(0)">View Details →</button>
                   </div>
                 </div>
               </div>
@@ -1584,11 +1442,18 @@
                   </div>
                 </div>
               </div>
-              <div class="modal-screenshots">
-                <img src="./images/ft-login.png" alt="Login" />
-                <img src="./images/ft-dashboard.png" alt="Dashboard" />
-                <img src="./images/ft-reports.png" alt="Reports" />
-                <img src="./images/ft-debt.png" alt="Debt" />
+              <div class="modal-screenshots scroll-left">
+                <div class="scroll-left-inner">
+                  <img src="./images/ft-login.png" alt="Login" />
+                  <img src="./images/ft-dashboard.png" alt="Dashboard" />
+                  <img src="./images/ft-reports.png" alt="Reports" />
+                  <img src="./images/ft-debt.png" alt="Debt" />
+                  <!-- duplicate for continuous loop -->
+                  <img src="./images/ft-login.png" alt="Login" />
+                  <img src="./images/ft-dashboard.png" alt="Dashboard" />
+                  <img src="./images/ft-reports.png" alt="Reports" />
+                  <img src="./images/ft-debt.png" alt="Debt" />
+                </div>
               </div>
               <div class="modal-links">
                 <a
