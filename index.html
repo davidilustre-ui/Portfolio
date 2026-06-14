@@ -834,6 +834,23 @@
         font-size: 0.88rem;
       }
 
+      .skills-group {
+        margin-bottom: 1.75rem;
+      }
+
+      .skills-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .skills-category {
+        font-family: var(--font-heading);
+        font-size: 0.88rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+
       .exp-role {
         font-family: var(--font-heading);
         font-size: 1rem;
@@ -1100,18 +1117,42 @@
               style="margin: 0 auto; max-width: 920px"
             >
               <div class="scroll-left-inner">
+                <div class="showcase-card" onclick="openProjectModal(0)">
+                  <div class="showcase-card-content">
+                    <div class="item-title">DIALPAD API INTEGRATION</div>
+                    <p>
+                      Automated Dialpad call-log ingestion into Salesforce with
+                      Apex Batch, Queueable and scheduled jobs.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">APEX</span>
+                      <span class="tag">SALESFORCE</span>
+                      <span class="tag">API INTEGRATION</span>
+                      <span class="tag">BATCH</span>
+                      <span class="tag">SCHEDULER</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(0)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
                 <div class="showcase-card" onclick="openProjectModal(1)">
                   <div class="showcase-card-content">
-                    <div class="item-title">SCDS</div>
+                    <div class="item-title">SALESFORCE STORAGE OPTIMIZATION</div>
                     <p>
-                      Backend-driven capstone app. Data management, scripting
-                      and automation.
+                      Migrated 1.8M records to MongoDB Atlas to resolve a storage
+                      crisis, with LWC restore and auto-archiving.
                     </p>
                     <div class="tags">
                       <span class="tag">PYTHON</span>
-                      <span class="tag">FLASK</span>
-                      <span class="tag">HTML</span>
-                      <span class="tag">CSS</span>
+                      <span class="tag">APEX</span>
+                      <span class="tag">LWC</span>
+                      <span class="tag">MONGODB</span>
+                      <span class="tag">GOOGLE CLOUD RUN</span>
+                      <span class="tag">SALESFORCE</span>
                     </div>
                     <button
                       class="view-details-btn"
@@ -1123,15 +1164,16 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
                   <div class="showcase-card-content">
-                    <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                    <div class="item-title">CHATTER-TO-EMAIL AUTOMATION</div>
                     <p>
-                      Academic performance tracking and analysis tool for
-                      educators.
+                      Record-Triggered Flow routing Chatter progress reports to a
+                      support inbox via the Gmail API.
                     </p>
                     <div class="tags">
-                      <span class="tag">PYTHON</span>
-                      <span class="tag">FLASK</span>
-                      <span class="tag">POSTGRESQL</span>
+                      <span class="tag">APEX</span>
+                      <span class="tag">SALESFORCE FLOW</span>
+                      <span class="tag">GMAIL API</span>
+                      <span class="tag">GOOGLE CLOUD</span>
                     </div>
                     <button
                       class="view-details-btn"
@@ -1141,7 +1183,30 @@
                     </button>
                   </div>
                 </div>
-                <div class="showcase-card" onclick="openProjectModal(0)">
+                <div class="showcase-card" onclick="openProjectModal(3)">
+                  <div class="showcase-card-content">
+                    <div class="item-title">
+                      CHATTER COMMENT ACCOUNTABILITY PIPELINE
+                    </div>
+                    <p>
+                      Apex trigger capturing FeedComment records as
+                      Accountability entries. 100% coverage, in Production.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">APEX</span>
+                      <span class="tag">SALESFORCE</span>
+                      <span class="tag">TRIGGER</span>
+                      <span class="tag">UNIT TESTING</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(3)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(4)">
                   <div class="showcase-card-content">
                     <div class="item-title">FINANCE TRACKER</div>
                     <p>
@@ -1160,14 +1225,13 @@
                     />
                     <button
                       class="view-details-btn"
-                      onclick="openProjectModal(0)"
+                      onclick="openProjectModal(4)"
                     >
                       View Details →
                     </button>
                   </div>
                 </div>
-                <!-- repeated sequence for seamless loop -->
-                <div class="showcase-card" onclick="openProjectModal(1)">
+                <div class="showcase-card" onclick="openProjectModal(5)">
                   <div class="showcase-card-content">
                     <div class="item-title">SCDS</div>
                     <p>
@@ -1177,6 +1241,74 @@
                     <div class="tags">
                       <span class="tag">PYTHON</span>
                       <span class="tag">FLASK</span>
+                      <span class="tag">HTML</span>
+                      <span class="tag">CSS</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(5)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(6)">
+                  <div class="showcase-card-content">
+                    <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                    <p>
+                      Academic performance tracking and analysis tool for
+                      educators.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">POSTGRESQL</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(6)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <!-- repeated sequence for seamless loop -->
+                <div class="showcase-card" onclick="openProjectModal(0)">
+                  <div class="showcase-card-content">
+                    <div class="item-title">DIALPAD API INTEGRATION</div>
+                    <p>
+                      Automated Dialpad call-log ingestion into Salesforce with
+                      Apex Batch, Queueable and scheduled jobs.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">APEX</span>
+                      <span class="tag">SALESFORCE</span>
+                      <span class="tag">API INTEGRATION</span>
+                      <span class="tag">BATCH</span>
+                      <span class="tag">SCHEDULER</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(0)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(1)">
+                  <div class="showcase-card-content">
+                    <div class="item-title">SALESFORCE STORAGE OPTIMIZATION</div>
+                    <p>
+                      Migrated 1.8M records to MongoDB Atlas to resolve a storage
+                      crisis, with LWC restore and auto-archiving.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">APEX</span>
+                      <span class="tag">LWC</span>
+                      <span class="tag">MONGODB</span>
+                      <span class="tag">GOOGLE CLOUD RUN</span>
+                      <span class="tag">SALESFORCE</span>
                     </div>
                     <button
                       class="view-details-btn"
@@ -1188,14 +1320,16 @@
                 </div>
                 <div class="showcase-card" onclick="openProjectModal(2)">
                   <div class="showcase-card-content">
-                    <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                    <div class="item-title">CHATTER-TO-EMAIL AUTOMATION</div>
                     <p>
-                      Academic performance tracking and analysis tool for
-                      educators.
+                      Record-Triggered Flow routing Chatter progress reports to a
+                      support inbox via the Gmail API.
                     </p>
                     <div class="tags">
-                      <span class="tag">PYTHON</span>
-                      <span class="tag">FLASK</span>
+                      <span class="tag">APEX</span>
+                      <span class="tag">SALESFORCE FLOW</span>
+                      <span class="tag">GMAIL API</span>
+                      <span class="tag">GOOGLE CLOUD</span>
                     </div>
                     <button
                       class="view-details-btn"
@@ -1205,7 +1339,30 @@
                     </button>
                   </div>
                 </div>
-                <div class="showcase-card" onclick="openProjectModal(0)">
+                <div class="showcase-card" onclick="openProjectModal(3)">
+                  <div class="showcase-card-content">
+                    <div class="item-title">
+                      CHATTER COMMENT ACCOUNTABILITY PIPELINE
+                    </div>
+                    <p>
+                      Apex trigger capturing FeedComment records as
+                      Accountability entries. 100% coverage, in Production.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">APEX</span>
+                      <span class="tag">SALESFORCE</span>
+                      <span class="tag">TRIGGER</span>
+                      <span class="tag">UNIT TESTING</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(3)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(4)">
                   <div class="showcase-card-content">
                     <div class="item-title">FINANCE TRACKER</div>
                     <p>
@@ -1215,6 +1372,8 @@
                     <div class="tags">
                       <span class="tag">NEXT.JS</span>
                       <span class="tag">REACT</span>
+                      <span class="tag">SUPABASE</span>
+                      <span class="tag">VERCEL</span>
                     </div>
                     <img
                       src="./images/ft-dashboard.png"
@@ -1222,7 +1381,48 @@
                     />
                     <button
                       class="view-details-btn"
-                      onclick="openProjectModal(0)"
+                      onclick="openProjectModal(4)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(5)">
+                  <div class="showcase-card-content">
+                    <div class="item-title">SCDS</div>
+                    <p>
+                      Backend-driven capstone app. Data management, scripting
+                      and automation.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">HTML</span>
+                      <span class="tag">CSS</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(5)"
+                    >
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+                <div class="showcase-card" onclick="openProjectModal(6)">
+                  <div class="showcase-card-content">
+                    <div class="item-title">STUDENT PERFORMANCE SYSTEM</div>
+                    <p>
+                      Academic performance tracking and analysis tool for
+                      educators.
+                    </p>
+                    <div class="tags">
+                      <span class="tag">PYTHON</span>
+                      <span class="tag">FLASK</span>
+                      <span class="tag">POSTGRESQL</span>
+                    </div>
+                    <button
+                      class="view-details-btn"
+                      onclick="openProjectModal(6)"
                     >
                       View Details →
                     </button>
@@ -1278,42 +1478,95 @@
             <h2 class="section-title">Skills</h2>
             <div class="section-line"></div>
           </div>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <strong>Salesforce</strong><span>Platform & automation</span>
+          <div class="skills-group">
+            <h3 class="skills-category">Platforms</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <strong>Salesforce</strong
+                ><span>Admin, App Builder, Platform Developer I</span>
+              </div>
             </div>
-            <div class="skill-item">
-              <strong>Apex</strong><span>Business logic</span>
+          </div>
+
+          <div class="skills-group">
+            <h3 class="skills-category">Languages & Backend</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <strong>Apex</strong
+                ><span>Batch, Queueable, Scheduler, Trigger</span>
+              </div>
+              <div class="skill-item">
+                <strong>Python</strong><span>Backend systems</span>
+              </div>
+              <div class="skill-item">
+                <strong>JavaScript</strong><span>Frontend development</span>
+              </div>
+              <div class="skill-item">
+                <strong>TypeScript</strong><span>Typed applications</span>
+              </div>
+              <div class="skill-item">
+                <strong>Flask</strong><span>API services</span>
+              </div>
             </div>
-            <div class="skill-item">
-              <strong>Lightning</strong><span>LWC & UI</span>
+          </div>
+
+          <div class="skills-group">
+            <h3 class="skills-category">Frontend</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <strong>LWC</strong><span>Lightning Web Components</span>
+              </div>
+              <div class="skill-item">
+                <strong>Lightning</strong><span>LWC & UI</span>
+              </div>
+              <div class="skill-item">
+                <strong>Next.js</strong><span>Web applications</span>
+              </div>
+              <div class="skill-item">
+                <strong>WordPress</strong><span>Web content</span>
+              </div>
             </div>
-            <div class="skill-item">
-              <strong>JavaScript</strong><span>Frontend development</span>
+          </div>
+
+          <div class="skills-group">
+            <h3 class="skills-category">Database</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <strong>Supabase</strong><span>Database & auth</span>
+              </div>
+              <div class="skill-item">
+                <strong>MongoDB</strong><span>Document database</span>
+              </div>
+              <div class="skill-item">
+                <strong>MongoDB Atlas</strong><span>Managed cloud database</span>
+              </div>
             </div>
-            <div class="skill-item">
-              <strong>TypeScript</strong><span>Typed applications</span>
+          </div>
+
+          <div class="skills-group">
+            <h3 class="skills-category">Cloud & Integrations</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <strong>Google Cloud Run</strong><span>Serverless REST APIs</span>
+              </div>
+              <div class="skill-item">
+                <strong>Gmail API</strong><span>Email integration</span>
+              </div>
+              <div class="skill-item">
+                <strong>Named Credentials</strong><span>Secure API auth</span>
+              </div>
             </div>
-            <div class="skill-item">
-              <strong>Python</strong><span>Backend systems</span>
-            </div>
-            <div class="skill-item">
-              <strong>Next.js</strong><span>Web applications</span>
-            </div>
-            <div class="skill-item">
-              <strong>Flask</strong><span>API services</span>
-            </div>
-            <div class="skill-item">
-              <strong>Supabase</strong><span>Database & auth</span>
-            </div>
-            <div class="skill-item">
-              <strong>WordPress</strong><span>Web content</span>
-            </div>
-            <div class="skill-item">
-              <strong>Scrum</strong><span>Agile delivery</span>
-            </div>
-            <div class="skill-item">
-              <strong>LLMs</strong><span>Emerging automation</span>
+          </div>
+
+          <div class="skills-group">
+            <h3 class="skills-category">Methods & Other</h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <strong>Scrum</strong><span>Agile delivery</span>
+              </div>
+              <div class="skill-item">
+                <strong>LLMs</strong><span>Emerging automation</span>
+              </div>
             </div>
           </div>
         </section>
@@ -1449,18 +1702,102 @@
         <div class="modal-body">
           <div class="modal-sidebar">
             <div class="modal-sidebar-item active" onclick="switchProject(0)">
-              <div class="sidebar-project-name">Finance Tracker</div>
+              <div class="sidebar-project-name">Dialpad API</div>
             </div>
             <div class="modal-sidebar-item" onclick="switchProject(1)">
-              <div class="sidebar-project-name">SCDS System</div>
+              <div class="sidebar-project-name">Storage Optimization</div>
             </div>
             <div class="modal-sidebar-item" onclick="switchProject(2)">
+              <div class="sidebar-project-name">Chatter-to-Email</div>
+            </div>
+            <div class="modal-sidebar-item" onclick="switchProject(3)">
+              <div class="sidebar-project-name">Chatter Comment</div>
+            </div>
+            <div class="modal-sidebar-item" onclick="switchProject(4)">
+              <div class="sidebar-project-name">Finance Tracker</div>
+            </div>
+            <div class="modal-sidebar-item" onclick="switchProject(5)">
+              <div class="sidebar-project-name">SCDS System</div>
+            </div>
+            <div class="modal-sidebar-item" onclick="switchProject(6)">
               <div class="sidebar-project-name">Student Perf</div>
             </div>
           </div>
           <div class="modal-content">
-            <!-- Project 0: Finance Tracker -->
+            <!-- Project 0: Dialpad API Integration -->
             <div class="modal-project active" data-project="0">
+              <p class="modal-description">
+                Automated call log ingestion from Dialpad into Salesforce using
+                Apex Batch, Queueable, and Scheduler classes. Implemented Named
+                Credentials, a custom Integration_Log__c object, and scheduled
+                jobs running at :00 and :30 hourly. 98–100% test coverage.
+                Deployed to Production.
+              </p>
+              <div class="modal-tags">
+                <span class="tag">APEX</span>
+                <span class="tag">SALESFORCE</span>
+                <span class="tag">API INTEGRATION</span>
+                <span class="tag">BATCH</span>
+                <span class="tag">SCHEDULER</span>
+              </div>
+            </div>
+
+            <!-- Project 1: Salesforce Storage Optimization -->
+            <div class="modal-project" data-project="1">
+              <p class="modal-description">
+                Resolved a 102% storage capacity crisis for a healthcare client
+                by migrating 1.8 million Accountability records to MongoDB Atlas
+                via a Python migration script and a Google Cloud Run REST API
+                middleware. Built an LWC Quick Action for on-demand record
+                restoration and a scheduled Apex batch for auto-archiving.
+              </p>
+              <div class="modal-tags">
+                <span class="tag">PYTHON</span>
+                <span class="tag">APEX</span>
+                <span class="tag">LWC</span>
+                <span class="tag">MONGODB</span>
+                <span class="tag">GOOGLE CLOUD RUN</span>
+                <span class="tag">SALESFORCE</span>
+              </div>
+            </div>
+
+            <!-- Project 2: Chatter-to-Email Automation -->
+            <div class="modal-project" data-project="2">
+              <p class="modal-description">
+                Built a Record-Triggered Flow on FeedItem that detects student
+                progress reports posted to Chatter and routes them to a support
+                inbox via Gmail API. Used a custom GmailSendInvocable and
+                GmailSendQueueable Apex pattern to send emails through Gmail
+                rather than Salesforce servers, ensuring sent items appear in
+                Gmail.
+              </p>
+              <div class="modal-tags">
+                <span class="tag">APEX</span>
+                <span class="tag">SALESFORCE FLOW</span>
+                <span class="tag">GMAIL API</span>
+                <span class="tag">GOOGLE CLOUD</span>
+              </div>
+            </div>
+
+            <!-- Project 3: Chatter Comment Accountability Pipeline -->
+            <div class="modal-project" data-project="3">
+              <p class="modal-description">
+                Extended MedCertify's Chatter automation to capture FeedComment
+                records as Accountability entries via an Apex trigger, handler,
+                and test class. Achieved 100% test coverage and deployed to
+                Production. Added a new Chatter Comment picklist value to the
+                global Accountability_Types value set.
+              </p>
+              <div class="modal-tags">
+                <span class="tag">APEX</span>
+                <span class="tag">SALESFORCE</span>
+                <span class="tag">TRIGGER</span>
+                <span class="tag">UNIT TESTING</span>
+              </div>
+            </div>
+
+            <!-- Project 4: Finance Tracker -->
+            <div class="modal-project" data-project="4">
               <p class="modal-description">
                 A production-deployed full-stack personal finance web app.
                 Features email/password auth, income and expense tracking,
@@ -1525,11 +1862,16 @@
                   target="_blank"
                   >View Code →</a
                 >
+                <a
+                  href="https://finance-tracker-sigma-silk-37.vercel.app"
+                  target="_blank"
+                  >Live Demo →</a
+                >
               </div>
             </div>
 
-            <!-- Project 1: SCDS -->
-            <div class="modal-project" data-project="1">
+            <!-- Project 5: SCDS -->
+            <div class="modal-project" data-project="5">
               <p class="modal-description">
                 A full backend-driven capstone web application built with Python
                 and Flask, covering data management, scripting, and automation.
@@ -1573,8 +1915,8 @@
               </div>
             </div>
 
-            <!-- Project 2: Student Performance -->
-            <div class="modal-project" data-project="2">
+            <!-- Project 6: Student Performance -->
+            <div class="modal-project" data-project="6">
               <p class="modal-description">
                 A school research project that tracks and analyzes student
                 academic performance data to support insights and reporting for
@@ -1657,6 +1999,10 @@
 
         // Update title
         const titles = [
+          'Dialpad API Integration',
+          'Salesforce Storage Optimization',
+          'Chatter-to-Email Automation',
+          'Chatter Comment Accountability Pipeline',
           'Finance Tracker',
           'SCDS Capstone System',
           'Student Performance System',
